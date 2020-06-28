@@ -6,6 +6,7 @@ def binomial(x, n, p):
     return(b)
 
 b=0
+
 p=1.09/2.09 #p= prob of success
 n= 6 #n= total no of trials
 for i in range(3,7):

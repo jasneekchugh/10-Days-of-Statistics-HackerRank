@@ -1,0 +1,37 @@
+#Pearson Correlation Coefficient I
+
+import statistics as st
+
+n = int(input())
+data_set_x = list(map(float, input().split()))
+data_set_y = list(map(float, input().split()))
+
+def corr(n, dt_x, dt_y):
+    mean_x = st.mean(dt_x)
+    mean_y = st.mean(dt_y)
+    std_x = st.pstdev(dt_x)
+    std_y = st.pstdev(dt_y)
+    cov = 0 #covariance
+    for i in range(n):
+        cov = cov + (dt_x[i] - mean_x) * (dt_y[i] - mean_y)
+    return cov / (n * std_x * std_y)
+
+print (round(corr(n, data_set_x, data_set_y), 3))
+
+
+#Alternate Solution
+
+n = int(input())
+data_set_x = list(map(float, input().split()))
+data_set_y = list(map(float, input().split()))
+
+mean_x = sum(data_set_x)/n
+mean_y = sum(data_set_y)/n
+std_x = (sum([(i-mean_x)**2 for i in data_set_x])/n)**0.5
+std_y = (sum([(i-mean_y)**2 for i in data_set_y])/n)**0.5
+
+cov = sum([(data_set_x[i] - mean_x) * (data_set_y[i] -mean_y) for i in range(n)])
+    
+corr = cov / (n * std_x * std_y)
+
+print(round(corr,3))
